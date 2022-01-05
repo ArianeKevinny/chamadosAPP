@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <img src="{{url_for('static',filename='key.png')}}">
+      </div>
+      <div class="col">
+        {% if session['autenticado']==True %}
+            #ID: {{session['usuario']}}
+        {% else %}
+            <a href="{{url_for('login')}}">ENTRAR</a>
+        {% endif %}
+      </div>
+      <div class="col">
+        {% if session['autenticado']==True %}
+            <a href="{{url_for('logout')}}">SAIR</a>
+        {% endif %}
+      </div>
+      <div class="col">
+        <img src="{{url_for('static',filename='key.png')}}">
+      </div>
+    </div>
+</div>
+
+
+<div class="card-group">
+    <div class="card">
+      
+      <div class="card-body">
+        <h5 class="card-title">Cadastrar Usuários</h5>
+        <p class="card-text">Função parara cadastramento de novos usuários do sistema.</p>
+        <p class="card-text"><small class="text-muted"><a href="{{url_for('cadastrar_usuario')}}">CADASTRAR USUÁRIO</a></small></p>
+      </div>
+    </div>
+    <div class="card">
+      
+        <div class="card-body">
+            <h5 class="card-title">Listar Usuários</h5>
+            <p class="card-text">Mostra todas os usuários cadastrados</p>
+            <p class="card-text"><small class="text-muted"><a href="{{url_for('listar_usuarios')}}">LISTAR USUÁRIOS</a></small></p>
+          </div>
+    </div>
+  </div>
+
+  <div class="card-group">
+    <div class="card">
+      
+      <div class="card-body">
+        <h5 class="card-title">Abrir Chamados</h5>
+        <p class="card-text">Função para cadastrar movos chamados</p>
+        <p class="card-text"><small class="text-muted"><a href="{{url_for('cadastrar_chamado')}}">CADASTRAR</a></small></p>
+      </div>
+    </div>
+    <div class="card">
+      
+        <div class="card-body">
+            <h5 class="card-title">Listar Chamados</h5>
+            <p class="card-text">Mostra todos os usuários cadastrados</p>
+            <p class="card-text"><small class="text-muted"><a href="{{url_for('listar_chamado')}}">LISTAR</a></small></p>
+          </div>
+    </div>
+    <div class="card">
+    
+  </div>
+
+{% endblock %}

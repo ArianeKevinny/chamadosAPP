@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+
+<table class="table table-dark table-striped">
+
+    <tr>
+        <th>ID do Chamado</th>
+        <th>Responsável</th>
+        <th>Quem realizou a solicitação</th>
+        <th>Descrição</th>
+        <th>Setor do Solicitante</th>
+        <th>Abertura</th>
+        <th>Fechamento</th>
+        <th>Encerrar</th>
+        <th>Remover</th>
+    </tr>
+    {% for chamado in chamados %}
+        <tr>
+            <td>{{chamado.id}}</td>
+            <td>{{chamado.id_usuario.nome}}</td>
+            <td>{{chamado.solicitante}}</td>
+            <td>{{chamado.descricao}}</td>
+            <td>{{chamado.setorChamado}}</td>
+            <td>{{chamado.data_abertura.strftime('%d/%m/%Y %H:%M')}}</td>
+            {% if chamado.data_fechamento is not none %}
+                <td>{{chamado.data_fechamento.strftime('%d/%m/%Y %H:%M')}}</td>
+            {% else %}
+                <td>NÃO SOLUCIONADA</td>
+            {% endif %}
+            <td><a href="{{url_for('encerrar_chamado',id_chamado=chamado.id_chamado)}}">ENCERRAR</a></td>
+            <td><a href="{{url_for('remover_chamado',id_chamado=chamado.id_chamado)}}">REMOVER</a></td>
+        </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}
