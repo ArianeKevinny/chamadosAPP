@@ -5,8 +5,8 @@ aplicacao = app.test_client()
 
 def login(client, username):
     return client.post('/usuario/login', data=dict(
-        usuario=username,
-        senha='654321'
+        usuario='username',
+        senha='123456'
     ), follow_redirects=True)
 
 def logout(client):
@@ -37,12 +37,12 @@ def test_2_login(client):
     assert b'autenticado com sucesso' in rv.data
 
 
-def test_3_chave_cadastrar_get(client):
-    rv = client.get('/chave/cadastrar',follow_redirects=True)
-    assert b'Nome da chave' in rv.data
+def test_3_chamado_cadastrar_get(client):
+    rv = client.get('/chamado/cadastrar',follow_redirects=True)
+    assert rv.status_code==200
 
-def test_4_chave_listar(client):
-    rv = client.get('/chave/listar',follow_redirects=True)
+def test_4_chamado_listar(client):
+    rv = client.get('/chamado/listar',follow_redirects=True)
     assert rv.status_code==200
 
 @pytest.mark.usefixtures('preparacao')
@@ -53,8 +53,3 @@ def test_5_login_errado(client):
 def test_6_usuario_listar(client):
     rv = client.get('/usuario/listar',follow_redirects=True)
     assert rv.status_code==200
-
-def test_7_chave_listar_emprestimos(client):
-    rv = client.get('/chave/listar_emprestimos',follow_redirects=True)
-    assert rv.status_code==200
-
