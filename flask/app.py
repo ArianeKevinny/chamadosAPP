@@ -193,16 +193,5 @@ def chamado_situacao(id):
 
     return(resultado)
 
-# @app.route('/chave/teste')
-# def chave_teste():
-#     #return(json_response(aplicacao="Flask",versao="2.0",data="28/09/2021"))
-#     chaves = Chave.query.order_by(Chave.nome).all()
-#     lista_chaves = []
-#     for chave in chaves:
-#         linha = {"nome": chave.nome, "disponivel": chave.disponivel}
-#         lista_chaves.append(linha)
-#     resultado = json.dumps([linha for linha in lista_chaves])
-#     return(resultado)
-
 if __name__ == "__main__":
     serve(app, host='0.0.0.0', port=80, url_prefix='/app')
