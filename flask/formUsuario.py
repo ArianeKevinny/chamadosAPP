@@ -5,7 +5,7 @@ from wtforms.validators import DataRequired
 
 class UsuarioForm(FlaskForm):
     nome = StringField('Nome: ', validators=[DataRequired()])
-    username = StringField(u'Nome de usuário: ',validators=[DataRequired()])
+    username = StringField('Nome de usuário: ',validators=[DataRequired()])
     email = EmailField('E-mail: ', validators=[DataRequired()])
     telefone = StringField('Telefone: ',validators=[DataRequired()])
     setor = StringField('Setor: ',validators=[DataRequired()])
